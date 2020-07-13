@@ -7,7 +7,7 @@ const app = express();
 
 // use Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, "/public/assets")));
+app.use(express.static(path.join(__dirname, "/public")));
 app.use(express.json());
 
 // sets an initial port to use to listen
@@ -43,7 +43,7 @@ app.get('/api/notes', (req, res) => {
 // post new notes/receieved and process data
 app.post("/api/notes", (req, res) => {
   let body = req.body;
-  let uniqueId = {"id":performance()};
+  let uniqueId = {"id":Math.round(Math.random()* 999999999)};
   
   console.log("id:", uniqueId)
   console.log("request:", body)
