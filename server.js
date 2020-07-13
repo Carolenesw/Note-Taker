@@ -14,9 +14,9 @@ app.use(express.json());
 const PORT = process.env.PORT || 8000;
 
 
-//reading the db.json and use ternary operator  to parse and push data to empty array
+//reading the db.json and use ternary operator  to parse or push data to empty array
 let dBase = fs.readFileSync("./db/db.json","utf-8");
-console.log(dBase)
+console.log("database:", dBase)
 dBase ? dBase = JSON.parse(dBase) : dBase = [];
 
 // set get request for root index html file/send response
@@ -31,30 +31,31 @@ app.get("/notes", function (req, res){
   res.sendFile(path.join(__dirname, "/public/notes.html"));
   });
 
-
-
 // set API Routes
-// app.get("/api/notes", (req, res) => {
-//   return res.send(db);
-// });
-// app.get('/api/notes', (req, res) => {
-//   res.sendFile(path.join(__dirname, '/db.json'));
-//   console.log;("db:", __dirname)
+app.get('/api/notes', (req, res) => {
+  return res.send(dBase);
+})
+
+// app.get("/api/notes", function(req, res) {
+//   return res.json(notes);
 // });
 
 // post new notes/receieved and process data
-// app.post("/api/notes", function(req, res) {
-//   if (notes === false) 
-//       notes = [];
-//   let newNotes = req.body;
-//   console.log(newNotes)
-//   count++;
-//   let id = count;
-//   newNotes.id = id;
-//   notes.push(newNotes);
-//   toStringAndWrite(notes);
-//   res.json(notes);
-// });
+app.post("/api/notes", (req, res) => {
+  let body = req.body;
+  let uniqueId = {"id":performance()};
+  
+  console.log("id:", uniqueId)
+  console.log("request:", body)
+  
+  body = {...uniqueId, ...body};
+  dBase.push(body);
+  fs.writeFileSync("./db/db.json", JSON.stringify(dBase), "utf-8");
+  res.json(true);
+  console.log("post data:", dBase)
+});
+
+
 
 // add error page send response
 app.get("*", (req, res)=> {
