@@ -2,6 +2,8 @@
 const express = require("express");
 const path = require("path");
 const fs = require("fs");
+// use performance to generate random numbers
+const performance = require("performance");
 // inform node that we are creating an express server 
 const app = express();
 
@@ -43,7 +45,7 @@ app.get('/api/notes', (req, res) => {
 // post new notes/receieved and process data
 app.post("/api/notes", (req, res) => {
   let body = req.body;
-  let uniqueId = {"id":Math.round(Math.random()* 999999999)};
+  let uniqueId = {"id":Math.round(Math.random()* 99)};
   
   console.log("id:", uniqueId)
   console.log("request:", body)
