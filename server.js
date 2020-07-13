@@ -20,15 +20,13 @@ app.get("/", function (req, res) {
     console.log(__dirname);
 });
 
-// add error page send response
-app.get("*", (req, res)=> {
-  res.json("404, Page not found")
-})
+
 // set get request for notes html file/send response
 app.get("/notes", function (req, res){
   res.sendFile(path.join(__dirname, "/public/notes.html"));
   });
   
+
 // set API Routes
 // app.get("/api/notes", (req, res) => {
 //   return res.send(db);
@@ -36,6 +34,11 @@ app.get("/notes", function (req, res){
 app.get('/api/notes', (req, res) => {
   res.sendFile(path.join(__dirname, '/db.json'));
 });
+
+// add error page send response
+app.get("*", (req, res)=> {
+  res.json("404, Page not found")
+})
 
 // start server
 app.listen(PORT, () => {
