@@ -14,7 +14,7 @@ app.use(express.json());
 const PORT = process.env.PORT || 8000;
 
 
-//reading the db.json
+//reading the db.json and use ternary operator  to parse and push data to empty array
 let dBase = fs.readFileSync("./db/db.json","utf-8");
 console.log(dBase)
 dBase ? dBase = JSON.parse(dBase) : dBase = [];
