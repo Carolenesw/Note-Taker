@@ -20,10 +20,6 @@
 
 * For users that need to keep track of a lot of information, it's easy to forget or be unable to recall something important. Being able to take persistent notes allows users to have written information available when needed.
 
-* The user can input any number of team members, and they may be a mix of engineers and interns. 
-* Create and pass all unit tests. 
-* When the user has completed building the team, the application will create an HTML file that displays a nicely formatted team roster based on the information provided by the user. 
-
 * The application should be albe to do the following: 
     - allow users to create and save notes.
     - allow users to view previously saved notes.
