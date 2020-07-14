@@ -54,8 +54,12 @@ Email: carolenesw@gmail.com
 
 ## link
 
-* repo link:
+* Repo link:
 https://github.com/Carolenesw/Note-Taker
+
+* Deployed URL:
+
+https://notestake.herokuapp.com/
 
 ## Images
 
