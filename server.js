@@ -8,13 +8,15 @@ const app = express();
 
 // use Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, "/public")));
 app.use(express.json());
+
+// use static file path to access all required file
+app.use(express.static(path.join(__dirname, "/public")));
 
 // sets an initial port to use to listen
 const PORT = process.env.PORT || 8000;
 
-//reading the db.json and use ternary operator  to parse or push data to empty array
+//reading the db.json and use ternary operator to parse or push data to empty array
 let dBase = fs.readFileSync("./db/db.json","utf-8");
 console.log("database:", dBase)
 dBase ? dBase = JSON.parse(dBase) : dBase = [];
@@ -22,8 +24,7 @@ dBase ? dBase = JSON.parse(dBase) : dBase = [];
 // set get request for root index html file/send response
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "/public/index.html"));
-    // res.send("Node Server App!")
-    console.log("notes:", __dirname);
+    console.log("index:", __dirname);
 });
 
 // set get request for notes html file/send response
@@ -63,10 +64,9 @@ app.delete("/api/notes/:id", (req,res) => {
   return res.json(true);
 });
 
-
-// add error page send response
+// add error/404 page send response
 app.get("*", (req, res)=> {
-  res.json("404, Page not found")
+  res.json("404, Page not found or Not available")
 })
 
 // start server
