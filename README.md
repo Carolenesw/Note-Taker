@@ -25,9 +25,9 @@
 * When the user has completed building the team, the application will create an HTML file that displays a nicely formatted team roster based on the information provided by the user. 
 
 * The application should be albe to do the following: 
-    ** allow users to create and save notes.
-    ** allow users to view previously saved notes.
-    ** allow users to delete previously saved notes.
+    - allow users to create and save notes.
+    - allow users to view previously saved notes.
+    - allow users to delete previously saved notes.
 
 ## Table of Content: 
 
@@ -57,9 +57,7 @@ Email: carolenesw@gmail.com
 * Repo link:
 https://github.com/Carolenesw/Note-Taker
 
-* Deployed URL:
-
-https://notestake.herokuapp.com/
+* Deployed URL: https://notestake.herokuapp.com/
 
 ## Images
 
